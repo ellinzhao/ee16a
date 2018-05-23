@@ -1,0 +1,110 @@
+
+\title{Linear Algebra cheat sheet}
+\author{
+        Ellin Zhao
+}
+\date{\today}
+
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage[shortlabels]{enumitem}
+\usepackage{marginnote}
+\usepackage{amsmath}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\A}{\mathbf{A}}
+\newcommand{\I}{\mathbf{I}}
+
+\begin{document}
+\maketitle
+
+\section{Chapter 1}
+
+\fbox{Thm} Given $\A\vec{x} = \vec{b}$, $\A$ is $m \times n$, the following statements are logically equivalent: 
+\begin{enumerate} [a)]
+  \item For each $\vec{b}$ in $\R^m$, $\A \vec{x} = \vec{b}$ has a solution.
+  \item Each $\vec{b}$ in $\R^m$ is a linear combination of columns of $\mathbf{A}$.
+  \item The columns of $\A$ span $\R^m$.
+  \item $\A$ has a pivot position in every row.
+\end{enumerate}
+
+\subsection{Transformations}
+
+\noindent \fbox{Def} A transformation $T$ is linear if:
+\begin{enumerate} [a)]
+  \item $T(\vec{u} + \vec{v}) = T(\vec{u}) + T(\vec{v}), \forall \vec{u}, \vec{v} \in T$  
+  check. does this mean each vector in the domain of T?
+  \item $T(c \vec{u}) = c \, T(\vec{u}), \forall c \in \R, \vec{u} \in T$
+\end{enumerate}
+
+\noindent \fbox{Def} A mapping $T:\R^n \rightarrow \R^m$ is \textbf{onto} $\R^m$ if each 
+$\vec{b}$ in $\R^m$ is the image of at least one $\vec{x}$ in $\R^n$.
+This is assuming the mapping is Ax=b.
+\begin{itemize}
+  \item pivots in every row iff columns span $\R^m$.
+\end{itemize}
+
+\noindent \fbox{Def} A mapping $T:\R^n \rightarrow \R^m$ is \textbf{one-to-one} if each 
+$\vec{b}$ in $\R^m$ is the image of at most one $\vec{x}$ in $\R^n$.
+This is assuming the mapping is Ax=b.
+\begin{itemize}
+  \item pivots in every column iff columns are linearly independent.
+\end{itemize}
+
+\section{Chapter 2}
+
+\fbox{Thm} Matrix transpose, inverse identities:
+ \begin{enumerate} [a)]
+   \item $(\A^\intercal)^\intercal = \A$
+   \item $(\A + \mathbf{B})^\intercal = \A^\intercal + \mathbf{B}^\intercal$
+   \item $(r \, \A)^\intercal = r\A^\intercal, \forall r \in \R$
+   \item $(\A \mathbf{B})^\intercal = \mathbf{B}^\intercal \A^\intercal$
+   \item $(\A^{-1})^{-1} = \A$
+   \item $(\A \mathbf{B})^{-1} = \mathbf{B}^{-1} \A^{-1}$
+   \item $(\A^\intercal)^{-1} = (\A^{-1})^\intercal$
+ \end{enumerate}
+ 
+\noindent \fbox{Thm} Inverse of a $2 \times 2$ matrix:
+$$
+\A = 
+\begin{bmatrix}
+    a & b \\
+    c & d 
+\end{bmatrix}
+\qquad
+\A^{-1} = 
+\frac{1}{ad-bc}
+\begin{bmatrix}
+    d & -b \\
+    -c & a 
+\end{bmatrix}
+$$
+
+
+\newpage
+
+\noindent \fbox{Thm} Invertible Matrix Thereom: Given $\A$ is $n \times n$, the following statements are logically equivalent:
+\begin{enumerate} [a)]
+  \item $\A$ is invertible.
+  \item $\A$ is row equivalent to $\I_{n \times n}$.
+  \item $\A$ has $n$ pivot positions.
+  \item $\A \vec{x} = \vec{0}$ has only trivial solutions.
+  \item Columns of $\A$ form a linearly independent set.
+  \item $\A \vec{x} = \vec{b}$ has at least one solutions for each $\vec{b}$ in $\R^n$.
+  \item $\vec{x} \mapsto \A \vec{x}$ is one-to-one.
+  \item Columns of $\A$ span $\R^n$.
+  \item $\vec{x} \mapsto \A \vec{x}$ maps $\R^n$ onto $\R^n$.
+  \item $\exists \, \mathbf{C}_{n \times n}$ such that $\mathbf{C} \A = \I$.
+  \item $\exists \, \mathbf{D}_{n \times n}$ such that $\A \mathbf{D} = \I$.
+  \item $\A^\intercal$ is an invertible matrix.
+  \item Columns of $\A$ form a basis of $\R^n$.
+  \item Col $\A$ = $\R^n$.
+  \item dim Col $\A$ = $n$.
+  \item rank $\A$ = $n$.
+  \item Nul $\A$ = ${\vec{0}}$ check this...
+  \item dim Nul $\A$ = 0.
+  \item 0 is not an eigenvalue of $\A$.
+  \item The determinant of $\A$ is not 0.
+\end{enumerate}
+
+\end{document}
