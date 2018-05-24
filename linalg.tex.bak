@@ -10,9 +10,15 @@
 \usepackage[shortlabels]{enumitem}
 \usepackage{marginnote}
 \usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\Thm}{\fbox{Thm}}
+\newcommand{\Def}{\fbox{Def}}
+\newcommand{\Fact}{\fbox{Fact}}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\A}{\mathbf{A}}
+\newcommand{\B}{\mathbf{B}}
 \newcommand{\I}{\mathbf{I}}
 
 \begin{document}
@@ -20,7 +26,9 @@
 
 \section{Chapter 1}
 
-\fbox{Thm} Given $\A\vec{x} = \vec{b}$, $\A$ is $m \times n$, the following statements are logically equivalent: 
+\begin{itemize}
+\item[\Thm]
+Given $\A\vec{x} = \vec{b}$, $\A$ is $m \times n$, the following statements are logically equivalent: 
 \begin{enumerate} [a)]
   \item For each $\vec{b}$ in $\R^m$, $\A \vec{x} = \vec{b}$ has a solution.
   \item Each $\vec{b}$ in $\R^m$ is a linear combination of columns of $\mathbf{A}$.
@@ -28,32 +36,43 @@
   \item $\A$ has a pivot position in every row.
 \end{enumerate}
 
+\end{itemize}
+
+
 \subsection{Transformations}
 
-\noindent \fbox{Def} A transformation $T$ is linear if:
+\begin{itemize}
+\item[\Def]
+A transformation $T$ is linear if:
 \begin{enumerate} [a)]
   \item $T(\vec{u} + \vec{v}) = T(\vec{u}) + T(\vec{v}), \forall \vec{u}, \vec{v} \in T$  
-  check. does this mean each vector in the domain of T?
+  check!!
   \item $T(c \vec{u}) = c \, T(\vec{u}), \forall c \in \R, \vec{u} \in T$
 \end{enumerate}
 
-\noindent \fbox{Def} A mapping $T:\R^n \rightarrow \R^m$ is \textbf{onto} $\R^m$ if each 
+\item[\Def] A mapping $T:\R^n \rightarrow \R^m$ is \textbf{onto} $\R^m$ if each 
 $\vec{b}$ in $\R^m$ is the image of at least one $\vec{x}$ in $\R^n$.
 This is assuming the mapping is Ax=b.
 \begin{itemize}
   \item pivots in every row iff columns span $\R^m$.
 \end{itemize}
 
-\noindent \fbox{Def} A mapping $T:\R^n \rightarrow \R^m$ is \textbf{one-to-one} if each 
+\item[\Def] A mapping $T:\R^n \rightarrow \R^m$ is \textbf{one-to-one} if each 
 $\vec{b}$ in $\R^m$ is the image of at most one $\vec{x}$ in $\R^n$.
 This is assuming the mapping is Ax=b.
 \begin{itemize}
   \item pivots in every column iff columns are linearly independent.
 \end{itemize}
 
+\end{itemize}
+
+\newpage
+
 \section{Chapter 2}
 
-\fbox{Thm} Matrix transpose, inverse identities:
+\begin{itemize}
+
+\item[\Thm] Matrix transpose, inverse identities:
  \begin{enumerate} [a)]
    \item $(\A^\intercal)^\intercal = \A$
    \item $(\A + \mathbf{B})^\intercal = \A^\intercal + \mathbf{B}^\intercal$
@@ -61,17 +80,17 @@ This is assuming the mapping is Ax=b.
    \item $(\A \mathbf{B})^\intercal = \mathbf{B}^\intercal \A^\intercal$
    \item $(\A^{-1})^{-1} = \A$
    \item $(\A \mathbf{B})^{-1} = \mathbf{B}^{-1} \A^{-1}$
-   \item $(\A^\intercal)^\intercal{-1} = $
+   \item $(\A^\intercal)^{-1} = (\A^{-1})^\intercal$
  \end{enumerate}
  
-\noindent \fbox{Thm} Inverse of a $2 \times 2$ matrix:
+\item[\Thm] Inverse of a $2 \times 2$ matrix:
 $$
 \A = 
 \begin{bmatrix}
     a & b \\
     c & d 
 \end{bmatrix}
-\, \, \, \, \, \, \, \, \, 
+\qquad
 \A^{-1} = 
 \frac{1}{ad-bc}
 \begin{bmatrix}
@@ -79,11 +98,143 @@ $$
     -c & a 
 \end{bmatrix}
 $$
-
+\end{itemize}
 
 \newpage
 
-\noindent \fbox{Thm} Invertible Matrix Thereom: Given $\A$ is $n \times n$, the following statements are logically equivalent:
+\section{Chapter 3}
+
+\begin{itemize}
+\item[\Thm] Determinant properties
+\begin{enumerate} [a)]
+  \item Multiple of one row of $\A$ added to another to form $\mathbf{B}$, 
+  $\text{det} \, \mathbf{B} = \text{det}\, \A$.
+  \item Two rows of $\A$ interchanged to produce $\mathbf{B}$, 
+  $\text{det}\, \mathbf{B} = - \text{det} \, \A$.
+  \item One row of $\A$ multiplied by $k$ to produce $\mathbf{B}$,
+  $\text{det} \, \mathbf{B} = k \, \text{det}\, \A$.
+\end{enumerate}
+
+\item[\Thm] If $\A_{n \times n}$, then $\text{det} \, \A^\intercal = \text{det} 
+\, \A$.
+
+\item[\Thm] If $\A_{n \times n}, \mathbf{B}_{n \times n}$, then 
+$\text{det} \, (\A \mathbf{B}) = (\text{det} \, \A)(\text{det} \, \mathbf{B})$. 
+
+\end{itemize}
+
+\subsection{Cramer's Rule}
+
+\begin{itemize}
+
+\item[\Thm] $\A_{n \times n}$ and invertible. $\A_i(\vec{b})$ is made by replacing 
+the $i^{th}$ column of $\A$ with $\vec{b}$. $x_i$ is the $i^{th}$ element of $\vec{x}$.
+
+For any $\vec{b} \in \R^n$, $x_i = \frac{\text{det} \, \A_i(\vec{b})}
+{\text{det} \, \A}, i=1,2,...,n$.
+\end{itemize}
+
+\newpage
+
+\section{Chapter 4}
+
+\begin{itemize}
+\item[\Def] A \textbf{vector space} is a nonempty set of vectors for which the following 
+ten axioms hold: note that u, v, w in V
+\begin{enumerate} [1)]
+  \item $\vec{u} + \vec{v} \in \mathcal{V}$
+  \item $\vec{u} + \vec{v} = \vec{v} + \vec{u}$
+  \item $(\vec{u} + \vec{v}) + \vec{w} = \vec{u} + (\vec{v} + \vec{w})$
+  \item $\vec{u} + \vec{0} = \vec{u}$ (a $\vec{0}$ exists in $\mathcal{V}$)
+  \item $\forall \vec{u} \in \mathcal{V}, \vec{u} + (-\vec{u}) = \vec{0}$
+  \item $c \vec{u} \in \mathcal{V}$
+  \item $c \, (\vec{u} + \vec{v}) = c \vec{u} + c \vec{v}$
+  \item $(c+d)\, \vec{u} = c \vec{u} + d \vec{u}$
+  \item $c (d \vec{u}) = (cd) \vec{u}$
+  \item $1\vec{u} = \vec{u}$
+\end{enumerate}
+
+\item[\Def] A \textbf{subspace} of $\mathcal{V}$ is a subset $\mathcal{H}$ of $
+\mathcal{V}$ with the following three properties:
+\begin{enumerate} [a)]
+  \item The $\vec{0}$ of $\mathcal{V}$ is in $\mathcal{H}$
+  \item $\vec{u} + \vec{v} \in \mathcal{H}, \forall \vec{u}, \vec{v} \in \mathcal{H}$
+  \item $c \vec{u} \in \mathcal{H}, \forall c \in \R, \forall \vec{u} \in \mathcal{H}$
+\end{enumerate}
+
+\item[\Thm] If $\vec{v_1}, ... , \vec{v_p} \in \mathcal{V}$, then 
+Span\{${\vec{v_1}, ... , \vec{v_p}}$\} is a subspace of $\mathcal{V}$.
+
+\item[\Def] Nul\,$\A$ = \{$\vec{x} : \vec{x} \in \R^n, \A \vec{x} = \vec{0}$\}
+
+\item[\Def] Col\,$\A$ = \{$\vec{b} : \vec{b} = \A \vec{x}, \text{for some } \vec{x} \in \R^n$\}
+\begin{itemize}
+  \item pivot columns of $\A$ forms a basis for Col\,$\A$
+\end{itemize}
+  
+\item[\Def] Suppose $\mathcal{H}$ is a subspace of $\mathcal{V}$. 
+$\beta = \{\vec{b_1},...,\vec{b_p}\}$ in $\mathcal{V}$ is a \textbf{basis} for $\mathcal{H}$ if:
+\begin{enumerate} [a)]
+  \item $\beta$ is a linearly independent set
+  \item $\mathcal{H} = \text{Span}\,\{\vec{b_1},...,\vec{b_p}\}$
+\end{enumerate}
+
+\item[\Def] rank\,$\A$ = dim Col\,$\A$ = dim Row\,$\A$ = dim Col\,$\A^\intercal$ \\
+rank\,$\A$ + dim Nul\,$\A$ = $n$
+
+\end{itemize}
+
+\newpage
+
+\section{Chapter 5}
+\begin{itemize}
+
+\item[\Thm] The eigenvalues of a triangular matrix are the entries on its main diagonal.
+
+\item[\Thm] If $\vec{v}_1,...,\vec{v}_r$ are eigenvectors that correspond to distinct 
+eigenvalues $\lambda_1,...,\lambda_r$, then the set \{$\vec{v}_1,...,\vec{v}_r$\} is 
+linearly independent.
+
+\item[\fbox{Fact}] det\,$\A$ = 
+$\begin{cases} 
+      (-1)^r \cdot (\text{product of pivots in echelon form}), & \A \text{ is invertible} \\
+      0, & \A \text{ is not invertible} \\
+   \end{cases}
+$
+
+\item[\Thm] Determinant properties: $\A_{n \times n}, \B_{n \times n}$
+\begin{itemize} [a)]
+  \item $\A$ is invertible $\iff$ det\,$\A \neq 0$
+  \item det\,($\A \B$) = (det\,$\A$)(det\,$\B$)
+  \item det\,$A^\intercal$ = det\,$\A$
+  \item If $\A$ is triangular, then det\,$\A$ = product of entries on main diagonal
+\end{itemize}
+
+\item[\Fact] $\lambda$ is an eigenvalue of $A_{n \times n} \iff$ det\,($\A - \lambda \I$) = 0 
+
+\item[\Def] Suppose $\A_{n \times n}, \B_{n \times n}$. $\A$ is similar to $\B$, 
+denoted $\A \sim \B$, if $\, \exists \, \mathbf{P}$ such that 
+$\mathbf{P}^{-1} \A \mathbf{P} = \B$.
+
+\item[\Thm] If $\A \sim \B$, then they have the same characteristic polynomial and the same 
+eigenvalues with the same multiplicities.
+
+\item[\Thm] $\A_{n \times n}$ is diagonalizable $\iff \A $ has $n$ linearly independent
+eigenvectors.
+
+\item[\Thm] Suppose  $\A_{n \times n}$ with distinct eigenvalues: $\lambda_1,...,\lambda_p$
+\begin{itemize} [a)]
+  \item For $1 \leq k \leq p$, the dimension of the eigenspace for $\lambda_k$ is less than
+  or equal to the multiplicity of $\lambda_k$.
+  \item 
+\end{itemize}
+
+\end{itemize}
+
+\newpage
+
+\begin{itemize}
+\item[\Thm] Invertible Matrix Theorem: Given $\A$ is $n \times n$, the following statements are logically equivalent:
 \begin{enumerate} [a)]
   \item $\A$ is invertible.
   \item $\A$ is row equivalent to $\I_{n \times n}$.
@@ -106,5 +257,6 @@ $$
   \item 0 is not an eigenvalue of $\A$.
   \item The determinant of $\A$ is not 0.
 \end{enumerate}
+\end{itemize}
 
 \end{document}
